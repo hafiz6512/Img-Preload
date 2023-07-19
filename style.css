@@ -1,0 +1,220 @@
+/*!
+Project Name: Images Preloader HTML
+Project URI: https://hafiz6512.github.io/Img-Preloader/
+Author: Hafizur Rahman
+Author URI: https://github.com/hafiz6512
+Autthor Email: hafiz6512@gmail.com
+Description: Images Preloader
+Version: 1.0.0
+License: GNU-MIT License Public License
+License URI: LICENSE
+Text Domain: Img-Preloader
+*/
+
+body{
+    padding: 0;
+    margin: 0;
+    font-size: 15px;
+    line-height: normal;
+    font-family: Arial;
+}
+*,
+*:before,
+*:after,
+html {
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
+
+p{
+    font-size: 15px;
+    line-height: 1.5;
+    margin: 0 0 10px;
+}
+
+.container{
+    position: relative;
+    max-width: 1310px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 30px;
+}
+
+.footer-text{
+    display: flex;
+    width: 100%;
+    padding: 20px 30px;
+    box-sizing: border-box;
+    height: 60px;
+    align-items: center;
+    justify-content: center;
+}
+.footer-text,
+.footer-text a{
+    color: #000;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.sec-title{
+    font-size: 40px;
+    text-transform: uppercase;
+    text-align: center;
+    padding-top: 40px;
+    margin: 0;
+}
+
+.card-content{
+    display: flex;
+    column-gap: 40px;
+    flex-wrap: wrap;
+    margin-top: 40px;
+    justify-content: center;
+}
+.card-content .card {
+    background-color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+    padding: 16px;
+    border-radius: 6px;
+}
+
+.card-content .card .card-title {
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 1.3;
+    text-transform: capitalize;
+    text-align: center;
+}
+
+.card-content .card{
+    width: calc(33.3333% - 30px);
+    margin-bottom: 40px;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+}
+.card-content .card .card-photo{
+    width: 100%;
+    border-radius: 0;
+    display: flex;
+    overflow: hidden;
+    max-width: 100%;
+    align-items: center;
+    justify-content: center;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+.card-content .card .card-photo img{
+    width: 100%;
+    display: block;
+    height: auto;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 1s ease-in-out 0s;
+}
+.card-content .card .card-photo.imgLoaded img{
+	opacity: 1;
+    visibility: visible;
+}
+.card-content .card p{
+    text-align: justify;
+}
+
+/**
+ * Preload Loading Class
+ */
+.loading{
+    position: relative;
+    overflow: hidden;
+    color: transparent;
+    background: #f6f7f8 !important;
+}
+.loading .bg_cover_hidden,
+.loading img{
+    visibility: hidden;
+}
+.loading:before{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    animation: placeHolderLoading 1s infinite;
+    animation-timing-function: linear;
+    background: #f6f7f8;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.07) 8%, rgba(0, 0, 0, 0.13) 18%, rgba(0, 0, 0, 0.07) 33%);
+    background-size: 200% 100px;
+    background-attachment: fixed;
+    display: block;
+    z-index: 10;
+    top: 0;
+    left: 0;
+}
+
+@keyframes placeHolderLoading {
+    0% {
+        background-position: 100% 0;
+    }
+    100% {
+        background-position: -100% 0;
+    }
+}
+
+/**
+ * FadeIn Animation
+ */
+.animate__animated {
+    -webkit-animation-duration: 1s;
+            animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+            animation-fill-mode: both;
+}
+.animate__fadeIn {
+    -webkit-animation-name: fadeIn;
+            animation-name: fadeIn;
+}
+
+@-webkit-keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/**
+ * Responsive Card
+ */
+@media (max-width: 991px){
+    .card-content .card{
+        width: calc(50% - 20px);
+    }
+
+    .card-content .card .card-photo{
+        width: 180px;
+        height: 180px;
+    }
+}
+
+@media (max-width: 600px){
+    .card-content .card{
+        width: 100%;
+    }
+}
+
+.blur {
+	position: relative;
+	filter: blur(10px);
+	transition: all 1s;
+}
+.noblur{
+	transition: all 2s;
+}
